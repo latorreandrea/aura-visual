@@ -1,12 +1,18 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-    });
+  // Prima carica il contenuto essenziale
+    setTimeout(function() {
+        // Poi inizializza AOS con impostazioni ottimizzate
+        AOS.init({
+            duration: 800,         // Durata ridotta
+            easing: 'ease-out',    // Easing più leggero
+            once: true,            // Una sola animazione
+            disable: 'mobile',     // Disabilita su mobile
+            startEvent: 'load',    // Inizia al caricamento completo
+            throttleDelay: 99      // Aumenta throttle delay
+        });
+    }, 100);
     // Selettori principali
     const selectHeader = document.querySelector('#header');
     const selectMobileNav = document.querySelector('.mobile-nav-toggle');

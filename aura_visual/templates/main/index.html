@@ -10,43 +10,20 @@
 {% block content %}
     <!-- ======= Hero Section ======= -->
     {% include 'components/hero.html' %}
-
-      <main id="main">
     <!-- ======= Main Content ======= -->
-    
+    <main id="main">
+    <!-- ======= Mission ======= -->
+    {% include 'components/mission.html' %}
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
-          </div>
-
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
-            <h3>About AuraVisual</h3>
-            <p>A lightweight, scalable Flask web application designed for deployment on Google Cloud Run. It serves as a foundation for creative startups looking to showcase their web presence with modern, modular architecture.</p>
-
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-              <div class="icon"><i class="bx bx-fingerprint"></i></div>
-              <h4 class="title"><a href="">Modular Design</a></h4>
-              <p class="description">Built with Flask Blueprints, AuraVisual supports easy expansion and maintenance.</p>
-            </div>
-
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
-              <div class="icon"><i class="bx bx-gift"></i></div>
-              <h4 class="title"><a href="">Serverless Architecture</a></h4>
-              <p class="description">Ready for deployment on Google Cloud Run with Docker and Cloud Build automation.</p>
-            </div>
-
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
-              <div class="icon"><i class="bx bx-atom"></i></div>
-              <h4 class="title"><a href="">Real-time Database</a></h4>
-              <p class="description">Integration with Google Firestore for fast, scalable backend data storage.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- End About Section -->
+    {% include 'components/about.html' %}
+    <!-- ======= Team Section ======= -->
+    {% include 'components/team.html' %}
+    </main>
+      
+    
+    
+    
+   
 
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">
@@ -126,6 +103,6 @@
 
     <!-- Other sections would go here -->
     
-  </main><!-- End #main -->
+  
 
 {% endblock %}
