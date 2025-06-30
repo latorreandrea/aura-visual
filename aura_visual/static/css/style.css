@@ -828,20 +828,19 @@ html {
   top: -60px; 
   left: 0;
   z-index: 5;
-  /* transform: rotate(180deg); Ruota le onde per orientarle correttamente */
 }
 
 .footer-waves .wave1 use {
-  animation: wave-anim 8s infinite ease-in-out; 
+  animation: wave-anim 9s infinite ease-in-out; 
   animation-delay: 1s;
 }
 
 .footer-waves .wave2 use {
-  animation: wave-anim 10s infinite ease-in-out; 
+  animation: wave-anim 11s infinite ease-in-out; 
   animation-delay: 0.8s;
 }
 
 .footer-waves .wave3 use {
-  animation: wave-anim 12s infinite ease-in-out; 
+  animation: wave-anim 14s infinite ease-in-out; 
   animation-delay: 0.6s;
 }
