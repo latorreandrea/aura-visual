@@ -303,7 +303,8 @@ html {
 
 /* Animation for the  image floating effect */
 .hero-img img.animated,
-.services-img img.animated {
+.services-img img.animated,
+.contact-img img.animated {
   animation: float 4s ease-in-out infinite;
 }
 
@@ -597,4 +598,250 @@ html {
 
 .team-info .social a:hover {
   color: #1acc8d;
+}
+
+/*---------------- Contact Section ------------------*/
+.contact .info {
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
+}
+
+.contact .info i {
+  font-size: 32px;
+  color: #1acc8d;
+  float: left;
+  line-height: 1;
+}
+
+.contact .info h4 {
+  padding: 0 0 0 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #010483;
+}
+
+.contact .info p {
+  padding: 0 0 0 60px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #0205a1;
+}
+
+.contact .email-form {
+  width: 100%;
+  background: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+}
+
+.contact .email-form .form-group {
+  padding-bottom: 8px;
+}
+
+.contact .email-form input, 
+.contact .email-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.contact .email-form input {
+  height: 44px;
+}
+
+.contact .email-form textarea {
+  padding: 10px 12px;
+}
+
+.contact .email-form button[type="submit"] {
+  background: #1acc8d;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.contact .email-form button[type="submit"]:hover {
+  background: #0205a1;
+}
+
+.contact .email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.contact .email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #1acc8d;
+  border-top-color: #eee;
+  animation: animate-loading 1s linear infinite;
+}
+
+.contact .email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #1acc8d;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*-------------- Footer ----------------*/
+#footer {
+  background: #010483;
+  color: #fff;
+  font-size: 14px;
+  text-align: left;
+  padding: 60px 0 30px;
+  position: relative;
+  margin-top: 60px;
+}
+
+.footer-top {
+  padding-bottom: 30px;
+}
+
+#footer .footer-info h3 {
+  font-size: 28px;
+  margin: 0 0 20px 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+}
+
+#footer .footer-info h3 span {
+  color: #1acc8d;
+}
+
+#footer .footer-info p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#footer .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .social-links a:hover {
+  background: #1acc8d;
+  color: #fff;
+  text-decoration: none;
+}
+
+#footer .footer-links {
+  margin-bottom: 30px;
+}
+
+#footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+#footer .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+#footer .footer-links ul i {
+  padding-right: 10px;
+  color: #1acc8d;
+  font-size: 16px;
+  line-height: 0;
+}
+
+#footer .footer-links ul a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+
+#footer .footer-links ul a:hover {
+  color: #1acc8d;
+}
+
+#footer .copyright {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#footer .copyright span {
+  color: #1acc8d;
+}
+/*--------- footer wawes ------------*/
+.footer-waves {
+  display: block;
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: -60px; 
+  left: 0;
+  z-index: 5;
+  /* transform: rotate(180deg); Ruota le onde per orientarle correttamente */
+}
+
+.footer-waves .wave1 use {
+  animation: wave-anim 8s infinite ease-in-out; 
+  animation-delay: 1s;
+}
+
+.footer-waves .wave2 use {
+  animation: wave-anim 10s infinite ease-in-out; 
+  animation-delay: 0.8s;
+}
+
+.footer-waves .wave3 use {
+  animation: wave-anim 12s infinite ease-in-out; 
+  animation-delay: 0.6s;
 }
