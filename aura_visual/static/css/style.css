@@ -525,6 +525,67 @@ html {
   margin: 0;
 }
 
+/*-------------- Process Timeline Styling ---------------*/
+.process-timeline {
+  position: relative;
+  margin: 30px 0 60px;
+}
+
+.process-step {
+  margin-bottom: 30px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.process-icon {
+  position: relative;
+  margin-right: 25px;
+  min-width: 70px;
+  text-align: center;
+}
+
+.process-number {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #1acc8d;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.process-content {
+  flex-grow: 1;
+}
+
+.process-content h4 {
+  color: #010483;
+  margin-bottom: 10px;
+}
+
+.process-content p {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .process-step {
+    flex-direction: column;
+  }
+  
+  .process-icon {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}
+
 /* Team Cards */
 .team-card {
   background: #fff;
@@ -843,4 +904,224 @@ html {
 .footer-waves .wave3 use {
   animation: wave-anim 14s infinite ease-in-out; 
   animation-delay: 0.6s;
+}
+
+/*--------- Portfolio ---------------*/
+.portfolio {
+  padding: 80px 0;
+}
+
+.portfolio-container {
+  row-gap: 30px;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.portfolio-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-img img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-img img {
+  transform: scale(1.1);
+}
+
+.portfolio-info {
+  padding: 25px 20px;
+}
+
+.portfolio-info h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #010483;
+}
+
+.portfolio-info .category {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1acc8d;
+  margin-bottom: 15px;
+  padding: 5px 12px;
+  background-color: rgba(26, 204, 141, 0.1);
+  border-radius: 20px;
+}
+
+.portfolio-info p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444444;
+  margin-bottom: 15px;
+  min-height: 70px;
+}
+
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  color: #010483;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.portfolio-link:hover {
+  color: #1acc8d;
+}
+
+.portfolio-link i {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-link:hover i {
+  transform: translateX(5px);
+}
+
+/*----------- plan pricing -----------*/
+.pricing {
+  padding: 80px 0;
+}
+
+.pricing .pricing-card {
+  position: relative;
+  background: #fff;
+  border-radius: 15px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+  height: 100%;
+  text-align: center;
+}
+
+.pricing .pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.pricing .pricing-card.featured {
+  border: 2px solid #1acc8d;
+  transform: scale(1.02);
+  z-index: 1;
+}
+
+.pricing .pricing-card.featured:hover {
+  transform: scale(1.02) translateY(-10px);
+}
+
+.pricing .pricing-header {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.pricing .pricing-card h3 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #010483;
+}
+
+.pricing .pricing-card h4 {
+  font-size: 36px;
+  color: #010483;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.pricing .pricing-card h4 sup {
+  font-size: 18px;
+  position: relative;
+  top: -15px;
+  margin-right: 5px;
+  color: #6c757d;
+}
+
+.pricing .pricing-card .popular-badge {
+  position: absolute;
+  top: -15px;
+  right: 50%;
+  transform: translateX(50%);
+  background: #1acc8d;
+  color: white;
+  padding: 5px 15px;
+  font-size: 12px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.pricing .pricing-card ul {
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.pricing .pricing-card ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #444;
+}
+
+.pricing .pricing-card ul li i {
+  color: #1acc8d;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.pricing .pricing-btn {
+  padding-top: 15px;
+}
+
+.pricing .pricing-btn .btn-get-started {
+  padding: 10px 25px;
+  font-size: 16px;
+}
+
+.pricing .pricing-card.featured .btn-get-started {
+  background-color: #010483;
+}
+
+.pricing .pricing-card.featured .btn-get-started:hover {
+  background-color: #fff;
+  border-color: #010483;
+  color: #010483;
+}
+
+@media (max-width: 991px) {
+  .pricing .pricing-card.featured {
+    transform: scale(1);
+    margin-top: 20px;
+  }
+  
+  .pricing .pricing-card.featured:hover {
+    transform: translateY(-10px);
+  }
 }
