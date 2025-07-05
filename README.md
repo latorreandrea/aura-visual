@@ -26,3 +26,41 @@ The app uses **Google Firestore** as its database, enabling serverless, real-tim
 - **Gunicorn**
 
 ---
+
+## 📝 Contact Form System
+
+The application includes a fully-featured contact form system that securely collects user inquiries and stores them in Firestore.
+
+### How it Works
+
+1. **User Interaction**
+   - User fills out the form fields and clicks "Submit"
+   - Front-end validation provides immediate feedback for basic errors
+
+2. **Form Submission Process**
+   - JavaScript intercepts the form submission
+   - Data is sent asynchronously via AJAX to prevent page reloads
+   - Loading indicator provides visual feedback during submission
+
+3. **Server-Side Processing**
+   - Flask backend receives the request
+   - WTForms validates all data according to defined rules
+   - CSRF protection prevents cross-site request forgery attacks
+
+4. **Data Handling**
+   - If validation fails, specific error messages are returned
+   - If successful, data is securely stored in Firestore
+   - Sanitization prevents injection attacks
+
+5. **Response Handling**
+   - Server returns JSON response with success/error status
+   - JavaScript processes the response
+   - User receives appropriate feedback (success message or error details)
+
+6. **Security Features**
+   - CSRF protection with Flask-WTF
+   - Input validation and sanitization
+   - IP address logging for audit purposes
+   - Rate limiting capability to prevent abuse
+
+This implementation follows modern web standards and best practices, providing a smooth user experience while maintaining robust security.

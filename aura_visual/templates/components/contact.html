@@ -18,8 +18,8 @@
     </div>
 
       <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
-        <form action="#" method="post" role="form" class="email-form">
-
+        <form action="{{ url_for('main.submit_contact') }}" method="post" role="form" class="email-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <div class="row">
             <div class="form-group col-md-6">
               <label for="name">Your Name</label>
