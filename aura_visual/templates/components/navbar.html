@@ -3,9 +3,11 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="{{ url_for('main.index') }}"><span>AuraVisual</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="img-fluid"></a> -->
+        <h1 class="m-0 d-flex align-items-center">
+          <a href="{{ url_for('main.index') }}">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="AuraVisual" class="logo-img me-2">
+          </a>
+        </h1>
       </div>
 
       <nav id="navbar" class="navbar">

@@ -40,6 +40,17 @@ html {
 }
 
 /*----------- Navigation Menu --------------*/
+.logo h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.logo-img {
+  height: 2.5rem;
+  width: auto;
+  vertical-align: middle;
+}
 /* Desktop */
 .navbar {
   padding: 0;
@@ -779,6 +790,26 @@ html {
 }
 
 /*-------------- Footer ----------------*/
+.logo-footer {
+  height: 2rem;
+  width: auto;
+  vertical-align: middle;
+}
+
+/* ensure responsive logo in footer */
+@media (max-width: 768px) {
+  .logo-footer {
+    height: 1.8rem;
+  }
+}
+
+/* ensure alignment of logo text */
+#footer .footer-info h3 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
 #footer {
   background: #010483;
   color: #fff;
@@ -835,6 +866,8 @@ html {
 
 #footer .footer-links {
   margin-bottom: 30px;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 #footer .footer-links ul {
@@ -865,10 +898,12 @@ html {
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
+  text-decoration: none;
 }
 
 #footer .footer-links ul a:hover {
   color: #1acc8d;
+  text-decoration: none;
 }
 
 #footer .copyright {
