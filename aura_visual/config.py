@@ -15,11 +15,11 @@ class Config:
     WTF_CSRF_ENABLED = True
     WTF_CSRF_TIME_LIMIT = 3600
     # Flask-Mail Configuration
-    MAIL_SERVER=os.environ.get('MAIL_SERVER')
-    MAIL_PORT=int(os.environ.get('MAIL_PORT', 587))
-    MAIL_USE_TLS=os.environ.get('MAIL_USE_TLS', 'True').lower() == 'true'
-    MAIL_USERNAME=os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD=os.environ.get('MAIL_PASSWORD')
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT', 587))
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'True').lower() == 'true'
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     
 class DevelopmentConfig(Config):
     DEBUG = True
