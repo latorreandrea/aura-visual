@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify, current_app
 from ..forms import ContactForm
-from ..repositories.contact_repository import ContactRepository  # Add this import
+from ..repositories.contact_repository import ContactRepository  
+from ..utils.email_service import send_contact_notification
 
 main = Blueprint('main', __name__)
 
@@ -43,7 +44,14 @@ def submit_contact():
         # Save the data to Firestore
         repository = ContactRepository()
         doc_id = repository.save_contact(form_data)
-        
+
+        # Send a notification email
+        try:
+            email_sent = send_contact_notification(form_data)
+        except Exception as e:
+            current_app.logger.error(f"Error sending email: {str(e)}")
+            email_sent = False
+
         # Success Log
         current_app.logger.info(f"Contact form submitted successfully. Doc ID: {doc_id}")
         

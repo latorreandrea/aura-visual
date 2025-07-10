@@ -41,8 +41,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Show the success message
                     sentMessage.style.display = 'block';
 
-                    // Reset the form
+                    // Disable the submit button
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<i class="bi bi-check-circle me-2"></i>Submitted';
+                    
+                    // Store submission timestamp in localStorage
+                    localStorage.setItem('lastFormSubmission', Date.now());
+                    
+                    // Reset the form but keep it disabled
                     contactForm.reset();
+                    
+                    // Make all form fields readonly
+                    contactForm.querySelectorAll('input, textarea').forEach(el => {
+                        el.readOnly = true;
+                    });
 
                     // Scroll to the success message
                     sentMessage.scrollIntoView({ behavior: 'smooth' });
