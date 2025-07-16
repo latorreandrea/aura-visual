@@ -15,7 +15,7 @@ class Config:
     WTF_CSRF_ENABLED = True
     WTF_CSRF_TIME_LIMIT = 3600
     
-    # Flask-Mail Configuration - Prioritize environment variables (set by Cloud Run in production)
+    # Email configuration for direct SMTP (used by smtplib)
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.zoho.eu')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', 587))
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'True').lower() == 'true'
