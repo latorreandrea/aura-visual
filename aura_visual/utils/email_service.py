@@ -7,7 +7,6 @@ def send_contact_notification(form_data):
         sends a notification email when a user submits the contact form.
     """
     try:
-        
         # Get email settings from configuration
         mail_username = current_app.config.get('MAIL_USERNAME')
         current_app.logger.info(f"Attempting to send email using {mail_username}")
@@ -26,12 +25,12 @@ def send_contact_notification(form_data):
         """        
         msg = Message(
             subject=subject,
-            recipients=['latorre.andrea.93@gmail.com'],
+            recipients=['latorre.andrea.93@gmail.com', 'rorro.arrieta.f@gmail.com'],
             body=body,
             sender=mail_username  # Use the authenticated account as sender
         )
         
-        # Set the reply-to address if provided
+        # Set the reply-to to the user's email if provided
         if form_data.get('email'):
             msg.reply_to = form_data.get('email')
         
