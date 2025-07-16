@@ -21,21 +21,19 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      - '--service-account'
+      - 'aura-visual-service@$PROJECT_ID.iam.gserviceaccount.com'
       - '--set-env-vars'
-      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
+      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID,MAIL_SERVER=${_MAIL_SERVER},MAIL_PORT=${_MAIL_PORT},MAIL_USE_TLS=${_MAIL_USE_TLS},MAIL_USE_SSL=${_MAIL_USE_SSL},MAIL_DEFAULT_SENDER=${_MAIL_DEFAULT_SENDER}'
       - '--update-secrets'
-      - 'SECRET_KEY=flask-secret-key:latest'
-      - '--update-env-vars=MAIL_SERVER=${_MAIL_SERVER},MAIL_PORT=${_MAIL_PORT},MAIL_USE_TLS=${_MAIL_USE_TLS},MAIL_USE_SSL=${_MAIL_USE_SSL}'
-      - '--update-secrets=MAIL_USERNAME=projects/${PROJECT_ID}/secrets/mail-username:latest,MAIL_PASSWORD=projects/${PROJECT_ID}/secrets/mail-password:latest'
+      - 'SECRET_KEY=flask-secret-key:latest,MAIL_USERNAME=mail-username:latest,MAIL_PASSWORD=mail-password:latest'
 
 substitutions:
   _MAIL_SERVER: smtp.zoho.eu
   _MAIL_PORT: '587'
   _MAIL_USE_TLS: 'True'
   _MAIL_USE_SSL: 'False'
+  _MAIL_DEFAULT_SENDER: 'info@auravisual.dk'
   
 options:
   logging: CLOUD_LOGGING_ONLY
-
-images:
-  - 'gcr.io/$PROJECT_ID/aura-visual'
