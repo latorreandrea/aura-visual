@@ -21,15 +21,11 @@ def send_contact_notification(form_data):
             # In local development: use config from .env
             username = current_app.config.get('MAIL_USERNAME')
             password = current_app.config.get('MAIL_PASSWORD')
-            
+
         # Get email configuration from app config
         smtp_server = current_app.config.get('MAIL_SERVER', 'smtp.zoho.eu')
         smtp_port = current_app.config.get('MAIL_PORT', 587)
         use_tls = current_app.config.get('MAIL_USE_TLS', True)
-        
-        # Get secrets directly from Secret Manager
-        username = get_secret('mail-username')
-        password = get_secret('mail-password')
         
         # Debug logging
         current_app.logger.info(f"SMTP Config: SERVER={smtp_server}, PORT={smtp_port}, TLS={use_tls}")
