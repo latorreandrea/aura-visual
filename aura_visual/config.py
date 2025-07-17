@@ -20,9 +20,10 @@ class Config:
     MAIL_PORT = int(os.environ.get('MAIL_PORT', 587))
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'True').lower() == 'true'
     MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL', 'False').lower() == 'true'
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')  # No default - must be set in Secret Manager
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')  # No default - must be set in Secret Manager
-    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER') or os.environ.get('MAIL_USERNAME')
+    # Default values for email credentials
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'info@auravisual.dk')  
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', '')  # Empty value as fallback
+    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', 'info@auravisual.dk')
 
 class DevelopmentConfig(Config):
     DEBUG = True
