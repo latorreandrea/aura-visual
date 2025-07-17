@@ -2,28 +2,43 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from flask import current_app
+from .secrets import get_secret
 
 def send_contact_notification(form_data):
     """
-        sends a notification email when a user submits the contact form.
-        Uses direct SMTP connection.
+    sends a notification email when a user submits the contact form.
+    Uses direct SMTP connection with secrets from Secret Manager.
     """
     try:
-        # Get email configuration
+        # Detect environment
+        is_cloud_run = os.environ.get('K_SERVICE') is not None
+        
+        if is_cloud_run:
+            # In Cloud Run: use Secret Manager
+            username = get_secret('mail-username')
+            password = get_secret('mail-password')
+        else:
+            # In local development: use config from .env
+            username = current_app.config.get('MAIL_USERNAME')
+            password = current_app.config.get('MAIL_PASSWORD')
+            
+        # Get email configuration from app config
         smtp_server = current_app.config.get('MAIL_SERVER', 'smtp.zoho.eu')
         smtp_port = current_app.config.get('MAIL_PORT', 587)
         use_tls = current_app.config.get('MAIL_USE_TLS', True)
-        username = current_app.config.get('MAIL_USERNAME')
-        password = current_app.config.get('MAIL_PASSWORD')
         
-        # Debug 
+        # Get secrets directly from Secret Manager
+        username = get_secret('mail-username')
+        password = get_secret('mail-password')
+        
+        # Debug logging
         current_app.logger.info(f"SMTP Config: SERVER={smtp_server}, PORT={smtp_port}, TLS={use_tls}")
-        current_app.logger.info(f"Username type: {type(username)}, length: {len(username) if username else 0}")
-        current_app.logger.info(f"Password type: {type(password)}, length: {len(password) if password else 0}")
+        current_app.logger.info(f"Username retrieved: {'Yes' if username else 'No'}")
+        current_app.logger.info(f"Password retrieved: {'Yes' if password else 'No'}")
         
         # Validate credentials
         if not username or not password:
-            current_app.logger.error("Username o password mancanti nelle configurazioni email")
+            current_app.logger.error("Failed to retrieve email credentials from Secret Manager")
             return False
         
         current_app.logger.info(f"Attempting to send email using {username} via direct SMTP")
@@ -51,8 +66,6 @@ def send_contact_notification(form_data):
         """
         msg.attach(MIMEText(body, 'plain'))
         
-        current_app.logger.info("Connecting to SMTP server...")
-        
         # Connect to server and send
         if use_tls:
             server = smtplib.SMTP(smtp_server, smtp_port)
@@ -60,10 +73,7 @@ def send_contact_notification(form_data):
         else:
             server = smtplib.SMTP_SSL(smtp_server, smtp_port)
             
-        current_app.logger.info("Attempting SMTP login...")
         server.login(username, password)
-        
-        current_app.logger.info("Sending email...")
         server.send_message(msg)
         server.quit()
         

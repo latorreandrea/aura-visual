@@ -23,8 +23,6 @@ steps:
       - '--allow-unauthenticated'
       - '--set-env-vars'
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID,MAIL_SERVER=${_MAIL_SERVER},MAIL_PORT=${_MAIL_PORT},MAIL_USE_TLS=${_MAIL_USE_TLS},MAIL_USE_SSL=${_MAIL_USE_SSL},MAIL_DEFAULT_SENDER=${_MAIL_DEFAULT_SENDER}'
-      - '--update-secrets'
-      - 'SECRET_KEY=flask-secret-key:latest,MAIL_USERNAME=mail-username:latest,MAIL_PASSWORD=mail-password:latest'
 
 substitutions:
   _MAIL_SERVER: smtp.zoho.eu
