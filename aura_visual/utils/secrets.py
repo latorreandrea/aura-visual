@@ -7,12 +7,7 @@ def get_secret(secret_name, project_id=None):
     Retrieve a secret from Google Cloud Secret Manager
     """
     try:
-        if not project_id:
-            project_id = current_app.config.get('GOOGLE_CLOUD_PROJECT')
-        
-        if not project_id:
-            current_app.logger.error("GOOGLE_CLOUD_PROJECT not set")
-            return None
+        project_id = 'auravisual'
             
         client = secretmanager.SecretManagerServiceClient()
         name = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
