@@ -16,12 +16,12 @@ def send_contact_notification(form_data):
         username = current_app.config.get('MAIL_USERNAME')
         password = current_app.config.get('MAIL_PASSWORD')
         
-        # Debug per vedere esattamente quali valori sono disponibili
+        # Debug 
         current_app.logger.info(f"SMTP Config: SERVER={smtp_server}, PORT={smtp_port}, TLS={use_tls}")
         current_app.logger.info(f"Username type: {type(username)}, length: {len(username) if username else 0}")
         current_app.logger.info(f"Password type: {type(password)}, length: {len(password) if password else 0}")
         
-        # Verifica che username e password non siano None
+        # Validate credentials
         if not username or not password:
             current_app.logger.error("Username o password mancanti nelle configurazioni email")
             return False
