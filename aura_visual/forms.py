@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, TelField
-from wtforms.validators import DataRequired, Email, Length, ValidationError
+from wtforms.validators import DataRequired, Email, Length, ValidationError, Optional
 import re
 
 class ContactForm(FlaskForm):
@@ -19,6 +19,11 @@ class ContactForm(FlaskForm):
     ])
     
     phone = TelField('Phone Number')
+
+    company = StringField('Company', validators=[
+        Optional(),
+        Length(max=100, message="Company name must not exceed 100 characters")
+    ])
     
     project_name = StringField('Project Name', validators=[
         DataRequired(message="Please enter a project name"),

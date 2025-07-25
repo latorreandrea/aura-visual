@@ -51,6 +51,7 @@ def send_contact_notification(form_data):
             msg.add_header('Reply-To', form_data.get('email'))
         
         # Create email body
+
         body = f"""
             You have received a new contact form submission:
 
@@ -58,6 +59,7 @@ def send_contact_notification(form_data):
             Email: {form_data.get('email')}
             Phone: {form_data.get('phone', 'Not provided')}
             Project: {form_data.get('project_name')}
+            Company: {form_data.get('company', 'Not provided')}
 
             Message: {form_data.get('message')}
         """
