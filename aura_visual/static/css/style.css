@@ -672,6 +672,43 @@ html {
   color: #1acc8d;
 }
 
+/*Team images hover effect only for tablet and bigger screen*/
+@media (min-width: 768px) {
+  .team-img {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .team-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #010483; 
+    opacity: 0.5;
+    z-index: 2;
+    transition: opacity 0.6s ease;
+  }
+  
+  .team-img img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Effetto hover - fade out overlay blue */
+  .team-card:hover .team-img::before {
+    opacity: 0;
+  }
+
+  /* Keep the image zoom effect */
+  .team-card:hover .team-img img {
+    transform: scale(1.1);
+  }
+}
 /*---------------- Contact Section ------------------*/
 .contact .info {
   width: 100%;
