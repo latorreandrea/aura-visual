@@ -8,7 +8,7 @@ if not is_cloud_run and os.path.exists('.env'):
 
 class Config:
     # Base Configuration
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-key-for-development'
+    SECRET_KEY = os.environ.get('FLASK_SECRET_KEY') or 'dev-key-for-development'
     GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
     
     # CSRF Configuration

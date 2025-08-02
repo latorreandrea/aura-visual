@@ -15,9 +15,9 @@ def send_contact_notification(form_data):
         is_cloud_run = os.environ.get('K_SERVICE') is not None
         
         if is_cloud_run:
-            # In Cloud Run: use Secret Manager
-            username = get_secret('mail-username')
-            password = get_secret('mail-password')
+            # In Cloud Run: use environment variables
+            username = os.environ.get('MAIL_USERNAME')
+            password = os.environ.get('MAIL_PASSWORD')
         else:
             # In local development: use config from .env
             username = current_app.config.get('MAIL_USERNAME')
@@ -53,15 +53,15 @@ def send_contact_notification(form_data):
         # Create email body
 
         body = f"""
-            You have received a new contact form submission:
+You have received a new contact form submission:
 
-            Name: {form_data.get('name')}
-            Email: {form_data.get('email')}
-            Phone: {form_data.get('phone', 'Not provided')}
-            Project: {form_data.get('project_name')}
-            Company: {form_data.get('company', 'Not provided')}
+Name: {form_data.get('name')}
+Email: {form_data.get('email')}
+Phone: {form_data.get('phone', 'Not provided')}
+Project: {form_data.get('project_name')}
+Company: {form_data.get('company', 'Not provided')}
 
-            Message: {form_data.get('message')}
+Message: {form_data.get('message')}
         """
         msg.attach(MIMEText(body, 'plain'))
         
