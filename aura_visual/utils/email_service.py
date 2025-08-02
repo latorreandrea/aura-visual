@@ -3,7 +3,6 @@ import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from flask import current_app
-from .secrets import get_secret
 
 def send_contact_notification(form_data):
     """
