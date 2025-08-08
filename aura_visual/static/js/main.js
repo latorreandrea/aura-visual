@@ -1,24 +1,22 @@
-
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Prima carica il contenuto essenziale
+  // First load the essential content
     setTimeout(function() {
-        // Poi inizializza AOS con impostazioni ottimizzate
+        // Then initialize AOS with optimized settings
         AOS.init({
-            duration: 800,         // Durata ridotta
-            easing: 'ease-out',    // Easing più leggero
-            once: true,            // Una sola animazione
-            disable: 'mobile',     // Disabilita su mobile
-            startEvent: 'load',    // Inizia al caricamento completo
-            throttleDelay: 99      // Aumenta throttle delay
+            duration: 800,         // Reduced duration
+            easing: 'ease-out',    // Lighter easing
+            once: true,            // Single animation only
+            disable: 'mobile',     // Disable on mobile
+            startEvent: 'load',    // Start on complete load
+            throttleDelay: 99      // Increase throttle delay
         });
     }, 100);
-    // Selettori principali
+    // Main selectors
     const selectHeader = document.querySelector('#header');
     const selectMobileNav = document.querySelector('.mobile-nav-toggle');
     const selectNavbarNav = document.querySelector('.navbar');
 
-    // Funzione per gestire l'header durante lo scroll
+    // Function to handle header during scroll
     function headerScrolled() {
         if (window.scrollY > 100) {
         selectHeader.classList.add('header-scrolled');
@@ -27,13 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Controlla lo stato iniziale
+    // Check initial state
     headerScrolled();
     
-    // Controlla durante lo scroll
+    // Check during scroll
     document.addEventListener('scroll', headerScrolled);
 
-    // Attiva il menu mobile
+    // Activate mobile menu
     if (selectMobileNav) {
         selectMobileNav.addEventListener('click', function() {
         selectNavbarNav.classList.toggle('navbar-mobile');
@@ -42,7 +40,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
   }
 
-  // Attiva dropdown sul mobile
+    // Function to close mobile navbar
+  function closeMobileNav() {
+    selectNavbarNav.classList.remove('navbar-mobile');
+    selectMobileNav.classList.add('bi-list');
+    selectMobileNav.classList.remove('bi-x');
+  }
+
+  // Close mobile navbar when clicking on a menu item
+  const navbarLinks = document.querySelectorAll('.navbar .nav-link.scrollto');
+  
+  navbarLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      // If mobile navbar is open, close it
+      if (selectNavbarNav.classList.contains('navbar-mobile')) {
+        closeMobileNav();
+      }
+    });
+  });
+
+  // Activate dropdown on mobile
   const navDropdowns = document.querySelectorAll('.navbar .dropdown > a');
   
   navDropdowns.forEach(function(el) {
@@ -54,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Attivazione elemento navbar durante lo scroll
+  // Activate navbar element during scroll
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-link.scrollto');
 
