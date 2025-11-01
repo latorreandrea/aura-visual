@@ -18,7 +18,7 @@ html {
 }
 
 #header.header-scrolled {
-  background: rgba(1, 4, 136, 0.9);
+  background: rgb(14, 58, 82);
   height: 60px;
 }
 
@@ -133,7 +133,7 @@ html {
   font-size: 14px;
   font-weight: 500;
   text-transform: none;
-  color: #01036f;
+  color: rgb(14, 58, 82);
 }
 
 .navbar .dropdown ul a i {
@@ -198,7 +198,7 @@ html {
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(1, 3, 91, 0.9);
+  background: rgba(14, 58, 82,  0.9);
   transition: 0.3s;
   z-index: 999;
 }
@@ -226,11 +226,11 @@ html {
 .navbar-mobile a, .navbar-mobile a:focus {
   padding: 10px 20px;
   font-size: 15px;
-  color: #0205a1;
+  color: rgb(2, 5, 161);
 }
 
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
-  color: #3f43fd;
+  color: rgb(63, 67, 253);
 }
 
 .navbar-mobile .dropdown ul {
@@ -241,7 +241,7 @@ html {
   z-index: 99;
   opacity: 1;
   visibility: visible;
-  background: #fff;
+  background: rgb(255, 255, 255);
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
 }
 
@@ -268,7 +268,7 @@ html {
 /*---------------- Hero Section ------------------*/
 #hero {
   width: 100%;
-  background: linear-gradient(45deg, rgba(1, 3, 91, 0.8), rgba(15, 169, 143, 0.9));
+  background: linear-gradient(45deg, rgba(14, 58, 82,  0.8), rgba(15, 169, 143, 0.9));
   background-size: cover;
   padding-top: 120px;
   padding-bottom: 60px;
@@ -454,7 +454,7 @@ html {
 .services h2 {
   font-size: 42px;
   font-weight: 700;
-  color: #010483;
+  color: rgb(14, 58, 82);
   margin-bottom: 20px;
   position: relative;
   padding-bottom: 15px;
@@ -496,7 +496,7 @@ html {
   margin-bottom: 15px;
   padding-bottom: 15px;
   position: relative;
-  color: #010483;
+  color: rgb(14, 58, 82);
 }
 
 .section-title h2::after {
@@ -513,7 +513,7 @@ html {
 .section-title p {
   font-size: 18px;
   margin-bottom: 0;
-  color: #010483;
+  color: rgb(14, 58, 82);
 }
 
 .about {
@@ -521,7 +521,7 @@ html {
 }
 
 .highlight-box {
-  background: linear-gradient(135deg, #010483, #1acc8d);
+  background: linear-gradient(135deg, rgb(14, 58, 82), #1acc8d);
   padding: 20px;
   border-radius: 10px;
   color: #fff;
@@ -576,7 +576,7 @@ html {
 }
 
 .process-content h4 {
-  color: #010483;
+  color: rgb(14, 58, 82);
   margin-bottom: 10px;
 }
 
@@ -636,7 +636,7 @@ html {
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 20px;
-  color: #010483;
+  color: rgb(14, 58, 82);
 }
 
 .team-info span {
@@ -662,7 +662,7 @@ html {
 .team-info .social a {
   font-size: 18px;
   display: inline-block;
-  color: #010483;
+  color: rgb(14, 58, 82);
   line-height: 1;
   margin: 0 8px;
   transition: all 0.3s ease;
@@ -686,7 +686,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #010483; 
+    background-color: rgb(14, 58, 82); 
     opacity: 0.5;
     z-index: 2;
     transition: opacity 0.6s ease;
@@ -730,14 +730,14 @@ html {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #010483;
+  color: rgb(14, 58, 82);
 }
 
 .contact .info p {
   padding: 0 0 0 60px;
   margin-bottom: 20px;
   font-size: 14px;
-  color: #0205a1;
+  color: rgb(14, 58, 82);
 }
 
 .contact .email-form {
@@ -777,7 +777,7 @@ html {
 }
 
 .contact .email-form button[type="submit"]:hover {
-  background: #0205a1;
+  background: rgb(14, 58, 82);
 }
 
 .contact .email-form .loading {
@@ -848,7 +848,7 @@ html {
 }
 
 #footer {
-  background: #010483;
+  background: rgb(14, 58, 82);
   color: #fff;
   font-size: 14px;
   text-align: left;
@@ -1029,7 +1029,7 @@ html {
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 20px;
-  color: #010483;
+  color: rgb(14, 58, 82);
 }
 
 .portfolio-info .category {
@@ -1054,7 +1054,7 @@ html {
 .portfolio-link {
   display: inline-flex;
   align-items: center;
-  color: #010483;
+  color: rgb(14, 58, 82);
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -1115,12 +1115,12 @@ html {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 20px;
-  color: #010483;
+  color: rgb(14, 58, 82);
 }
 
 .pricing .pricing-card h4 {
   font-size: 36px;
-  color: #010483;
+  color: rgb(14, 58, 82);
   font-weight: 700;
   margin-bottom: 0;
 }
@@ -1192,13 +1192,13 @@ html {
 }
 
 .pricing .pricing-card.featured .btn-get-started {
-  background-color: #010483;
+  background-color: rgb(14, 58, 82);
 }
 
 .pricing .pricing-card.featured .btn-get-started:hover {
   background-color: #fff;
-  border-color: #010483;
-  color: #010483;
+  border-color: rgb(14, 58, 82);
+  color: rgb(14, 58, 82);
 }
 
 @media (max-width: 991px) {
