@@ -943,6 +943,25 @@ html {
   text-decoration: none;
 }
 
+/* Footer navigation links - White with green hover */
+.footer-links li a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #1acc8d !important;
+  text-decoration: none !important;
+}
+
+/* Remove underline in all states */
+.footer-links li a:focus,
+.footer-links li a:active,
+.footer-links li a:visited {
+  text-decoration: none !important;
+} 
+
 #footer .copyright {
   text-align: center;
   padding-top: 30px;
