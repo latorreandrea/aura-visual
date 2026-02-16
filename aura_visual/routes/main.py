@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, current_app
+from flask import Blueprint, render_template, request, jsonify, current_app, send_from_directory
 from ..forms import ContactForm
 from ..repositories.contact_repository import ContactRepository  
 from ..utils.email_service import send_contact_notification
@@ -76,3 +76,13 @@ def submit_contact():
             'success': False,
             'message': 'An error occurred while processing your request. Please try again later.'
         }), 500
+
+
+@main.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory(current_app.static_folder, 'sitemap.xml', mimetype='application/xml')
+
+
+@main.route('/robots.txt')
+def robots():
+    return send_from_directory(current_app.static_folder, 'robots.txt', mimetype='text/plain')

@@ -9,6 +9,79 @@
     <meta content="{% block meta_keywords %}start app, create landing page, create e-commerce{% endblock %}" name="keywords">
     <link rel="canonical" href="{% block canonical_url %}https://www.auravisual.dk/{% endblock %}">
 
+    <meta property="og:title" content="{% block og_title %}AuraVisual{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}AuraVisual we create and support your online presence, helping your business grow and stand out on the web.{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://www.auravisual.dk/{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{% block twitter_title %}AuraVisual{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}AuraVisual we create and support your online presence, helping your business grow and stand out on the web.{% endblock %}">
+
+        {% block structured_data %}
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Organization",
+                    "@id": "https://www.auravisual.dk/#organization",
+                    "name": "AuraVisual",
+                    "url": "https://www.auravisual.dk/",
+                    "email": "info@auravisual.dk",
+                    "telephone": "+45 503 22 726",
+                    "description": "From landing pages to custom e-commerce and powerful web apps, we turn your ideas into digital experiences that grow with you.",
+                    "areaServed": "Denmark",
+                    "hasOfferCatalog": {
+                        "@type": "OfferCatalog",
+                        "name": "Packages",
+                        "itemListElement": [
+                            {
+                                "@type": "Offer",
+                                "name": "Aura Farming",
+                                "priceCurrency": "DKK",
+                                "price": "8875",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Logo design, one-page website, social media setup, product photos, and presentation cards"
+                                }
+                            },
+                            {
+                                "@type": "Offer",
+                                "name": "Aura Boost",
+                                "priceCurrency": "DKK",
+                                "price": "19500",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Logo design, three-section website, e-shop integration, social media setup, content plan, and launch video"
+                                }
+                            },
+                            {
+                                "@type": "Offer",
+                                "name": "Complete Aura",
+                                "priceCurrency": "DKK",
+                                "price": "25500",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Full branding, complete website with e-shop, social media setup, content plan, and product video and photo sessions"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://www.auravisual.dk/#website",
+                    "url": "https://www.auravisual.dk/",
+                    "name": "AuraVisual",
+                    "publisher": {
+                        "@id": "https://www.auravisual.dk/#organization"
+                    }
+                }
+            ]
+        }
+        </script>
+        {% endblock %}
+
     <!-- Favicon -->
     <link rel="icon" href="{{ url_for('static', filename='img/auravi.ico') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/auravi.ico') }}" type="image/x-icon">
