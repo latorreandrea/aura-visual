@@ -6,13 +6,14 @@
 
     <title>{% block title %}AuraVisual{% endblock %}</title>
     <meta content="{% block meta_description %}AuraVisual we create and support your online presence, helping your business grow and stand out on the web.{% endblock %}" name="description">
-    <meta content="{% block meta_keywords %}start app, create landing page, create e-commerce{% endblock %}" name="keywords">
     <link rel="canonical" href="{% block canonical_url %}https://www.auravisual.dk/{% endblock %}">
 
     <meta property="og:title" content="{% block og_title %}AuraVisual{% endblock %}">
     <meta property="og:description" content="{% block og_description %}AuraVisual we create and support your online presence, helping your business grow and stand out on the web.{% endblock %}">
     <meta property="og:url" content="{% block og_url %}https://www.auravisual.dk/{% endblock %}">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="{% block og_image %}https://www.auravisual.dk/static/img/logo.png{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}https://www.auravisual.dk/static/img/logo.png{% endblock %}">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{% block twitter_title %}AuraVisual{% endblock %}">
     <meta name="twitter:description" content="{% block twitter_description %}AuraVisual we create and support your online presence, helping your business grow and stand out on the web.{% endblock %}">
@@ -27,10 +28,15 @@
                     "@id": "https://www.auravisual.dk/#organization",
                     "name": "AuraVisual",
                     "url": "https://www.auravisual.dk/",
+                    "logo": "https://www.auravisual.dk/static/img/logo.png",
                     "email": "info@auravisual.dk",
                     "telephone": "+45 503 22 726",
                     "description": "From landing pages to custom e-commerce and powerful web apps, we turn your ideas into digital experiences that grow with you.",
                     "areaServed": "Denmark",
+                    "sameAs": [
+                        "https://www.instagram.com/auravisual.labs/",
+                        "https://www.linkedin.com/in/contact-auravisual/"
+                    ],
                     "hasOfferCatalog": {
                         "@type": "OfferCatalog",
                         "name": "Packages",
