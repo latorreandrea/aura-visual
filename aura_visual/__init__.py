@@ -16,7 +16,9 @@ def create_app(config_name='default'):
     
     # register blueprints
     from .routes.main import main as main_blueprint
+    from .routes.your_card import your_card as your_card_blueprint
     app.register_blueprint(main_blueprint)
+    app.register_blueprint(your_card_blueprint)
     
     return app
 

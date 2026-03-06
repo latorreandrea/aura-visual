@@ -25,6 +25,15 @@ class Config:
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', '')  # Empty value as fallback
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', 'info@auravisual.dk')
 
+    # Your Card product presentation defaults
+    YOUR_CARD_PRODUCT_NAME = os.environ.get('YOUR_CARD_PRODUCT_NAME', 'Your Card')
+    YOUR_CARD_PRODUCT_DESCRIPTION = os.environ.get(
+        'YOUR_CARD_PRODUCT_DESCRIPTION',
+        'A simple and focused product offer designed to present value clearly.'
+    )
+    YOUR_CARD_PRODUCT_PRICE = os.environ.get('YOUR_CARD_PRODUCT_PRICE', 'Contact us')
+    YOUR_CARD_PRODUCT_CURRENCY = os.environ.get('YOUR_CARD_PRODUCT_CURRENCY', 'DKK')
+
 class DevelopmentConfig(Config):
     DEBUG = True
     TESTING = True

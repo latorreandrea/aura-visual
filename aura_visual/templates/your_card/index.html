@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Your Card | AuraVisual{% endblock %}
+{% block meta_description %}Discover Your Card, a focused product offer by AuraVisual.{% endblock %}
+{% block canonical_url %}https://www.auravisual.dk/your-card/{% endblock %}
+
+{% block content %}
+<section class="py-5" style="margin-top: 100px;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1 class="mb-3">{{ product.name }}</h1>
+        <p class="mb-3">{{ product.description }}</p>
+        <p class="mb-0"><strong>Price:</strong> {{ product.price }} {{ product.currency }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
