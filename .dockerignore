@@ -1,0 +1,33 @@
+# VCS
+.git
+.gitignore
+.gcloudignore
+
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environment and secrets
+.env
+*.pem
+*.key
+auravisual-app.json
+
+# Test, docs, reports
+tests/
+docs/
+htmlcov/
+.coverage*
+*.md
+
+# Logs and local DB files
+*.log
+*.sqlite3
