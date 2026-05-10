@@ -21,6 +21,10 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      - '--memory'
+      - '256Mi'
+      - '--cpu'
+      - '1'
       - '--set-env-vars'
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID,MAIL_SERVER=${_MAIL_SERVER},MAIL_PORT=${_MAIL_PORT},MAIL_USE_TLS=${_MAIL_USE_TLS},MAIL_USE_SSL=${_MAIL_USE_SSL},MAIL_DEFAULT_SENDER=${_MAIL_DEFAULT_SENDER}'
 
