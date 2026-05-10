@@ -1,31 +1,37 @@
 import os
-from dotenv import load_dotenv
-
-# Load .env ONLY in development (non-Cloud Run) environments
-is_cloud_run = os.environ.get('K_SERVICE') is not None
-if not is_cloud_run and os.path.exists('.env'):
-    load_dotenv()
 
 class Config:
-    # Base Configuration
+    # -------------------------------------------------------------------------
+    # Security
+    # -------------------------------------------------------------------------
+    # FLASK_SECRET_KEY must always be set via environment variable in production.
     SECRET_KEY = os.environ.get('FLASK_SECRET_KEY') or 'dev-key-for-development'
+
+    # -------------------------------------------------------------------------
+    # Google Cloud
+    # -------------------------------------------------------------------------
     GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
-    
-    # CSRF Configuration
+
+    # -------------------------------------------------------------------------
+    # CSRF Protection
+    # -------------------------------------------------------------------------
     WTF_CSRF_ENABLED = True
-    WTF_CSRF_TIME_LIMIT = 3600
-    
-    # Email configuration for direct SMTP (used by smtplib)
+    WTF_CSRF_TIME_LIMIT = 3600  # Token expires after 1 hour
+
+    # -------------------------------------------------------------------------
+    # Email (SMTP via Zoho)
+    # -------------------------------------------------------------------------
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.zoho.eu')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', 587))
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'True').lower() == 'true'
     MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL', 'False').lower() == 'true'
-    # Default values for email credentials
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'info@auravisual.dk')  
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', '')  # Empty value as fallback
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'info@auravisual.dk')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', '')
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', 'info@auravisual.dk')
 
-    # Your Card product presentation defaults
+    # -------------------------------------------------------------------------
+    # Your Card — product page defaults (overridable via env vars)
+    # -------------------------------------------------------------------------
     YOUR_CARD_PRODUCT_NAME = os.environ.get('YOUR_CARD_PRODUCT_NAME', 'Your Card')
     YOUR_CARD_PRODUCT_DESCRIPTION = os.environ.get(
         'YOUR_CARD_PRODUCT_DESCRIPTION',
@@ -37,14 +43,26 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     TESTING = True
-    GOOGLE_APPLICATION_CREDENTIALS = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+    # In local development, the Google SDK picks up GOOGLE_APPLICATION_CREDENTIALS
+    # automatically from the OS environment (set in .env). No extra Flask config needed.
+
 
 class ProductionConfig(Config):
     DEBUG = False
     TESTING = False
-    
+
+    @classmethod
+    def validate(cls):
+        """Raise an error at startup if required production secrets are missing."""
+        if not os.environ.get('FLASK_SECRET_KEY'):
+            raise RuntimeError(
+                "FLASK_SECRET_KEY environment variable is not set. "
+                "This is required in production."
+            )
+
+
 config = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,
-    'default': DevelopmentConfig
+    'default': DevelopmentConfig,
 }
