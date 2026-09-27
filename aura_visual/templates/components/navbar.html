@@ -12,14 +12,10 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero" aria-label="Go to Home section">Home</a></li>
-          <li><a class="nav-link scrollto" href="#mission" aria-label="Go to Mission section">Mission</a></li>
-          <li><a class="nav-link scrollto" href="#about" aria-label="Go to About section">About</a></li>
-          <!-- <li><a class="nav-link scrollto" href="#features">Features</a></li> -->
-          <li><a class="nav-link scrollto" href="#team" aria-label="Go to Team section">Team</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#plan" aria-label="Go to Plans section">Plan</a></li>          
-          <li><a class="nav-link scrollto" href="#contact" aria-label="Go to Contact section">Contact</a></li>
+          <li><a class="nav-link" href="{{ url_for('main.index') }}" aria-label="Back to home page">Home</a></li>
+          <li><a class="nav-link scrollto active" href="#hero" aria-label="Go to Home section">Overview</a></li>
+          <li><a class="nav-link scrollto" href="#benefits" aria-label="Go to Benefits section">Benefits</a></li>
+          <li><a class="nav-link scrollto" href="#how-it-works" aria-label="Go to How it works section">How it works</a></li>
           <li><a class="nav-link" href="{{ url_for('your_card.index') }}" aria-label="Go to Your Card page">Your Card</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

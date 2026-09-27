@@ -33,8 +33,20 @@ AuraVisual is a modular Flask web application designed for:
 - storing requests in Google Firestore
 - sending internal notification emails over SMTP
 - deploying on Google Cloud Run through Cloud Build
+- promoting digital product offers such as the NFC business card landing page
 
 The codebase follows a factory pattern with Blueprints, making it easy to extend and maintain.
+
+## Your Card product page
+
+The project includes a dedicated sales page for the NFC card product under the `/your-card/` route. The page is designed to explain the actual business value of the product:
+
+- replace the traditional paper card with a digital first impression
+- redirect customers to the relevant page with a single tap
+- direct clients to the company website, portfolio, CV, or campaign destination
+- improve engagement during networking, sales meetings, and events
+
+The page is implemented as a separate Flask blueprint and stays consistent with the existing marketing site structure and shared navbar.
 
 ## Key Features
 

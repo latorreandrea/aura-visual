@@ -1,19 +1,227 @@
 {% extends "base.html" %}
 
-{% block title %}Your Card | AuraVisual{% endblock %}
-{% block meta_description %}Discover Your Card, a focused product offer by AuraVisual.{% endblock %}
+{% block title %}Your Card | NFC business card by AuraVisual{% endblock %}
+{% block meta_description %}Turn every introduction into a digital experience with NFC cards that instantly open the page you want, from portfolio to website, CV, or campaign landing page.{% endblock %}
 {% block canonical_url %}https://www.auravisual.dk/your-card/{% endblock %}
 
 {% block content %}
-<section class="py-5" style="margin-top: 100px;">
+<section class="your-card-hero" id="hero">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <h1 class="mb-3">{{ product.name }}</h1>
-        <p class="mb-3">{{ product.description }}</p>
-        <p class="mb-0"><strong>Price:</strong> {{ product.price }} {{ product.currency }}</p>
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <span class="eyebrow">Smart networking</span>
+        <h1>One tap. <span>One destination.</span></h1>
+        <p class="lead">
+          A smarter business card for companies that want to turn every conversation into a digital opportunity.
+          With NFC technology, your card opens the exact page you want — website, portfolio, CV, booking form, or campaign.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="{{ url_for('main.index') }}#contact" class="btn-get-started pulse-animation">Get Your Card</a>
+          <a href="{{ url_for('main.index') }}" class="btn btn-outline-light btn-lg">Back to home</a>
+        </div>
+        <ul class="hero-points">
+          <li><i class="bi bi-check-circle-fill"></i> Tap to open any page instantly</li>
+          <li><i class="bi bi-check-circle-fill"></i> Built for B2B networking and lead generation</li>
+          <li><i class="bi bi-check-circle-fill"></i> Designed to feel premium and memorable</li>
+        </ul>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="nfc-showcase">
+          <div class="nfc-card">
+            <div class="chip"></div>
+            <div class="brand">AuraVisual</div>
+            <div class="card-name">Your Card</div>
+            <div class="tag">Tap to connect</div>
+            <div class="wave-ring ring-one"></div>
+            <div class="wave-ring ring-two"></div>
+            <div class="wave-ring ring-three"></div>
+          </div>
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <div class="mini-card">
+                <span>Portfolio</span>
+                <strong>auravisual.dk</strong>
+              </div>
+              <div class="mini-circle"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<main class="your-card-page">
+  <section class="py-5" id="benefits">
+    <div class="container">
+      <div class="section-title text-center" data-aos="fade-up">
+        <h2>Why companies choose NFC cards</h2>
+        <p>Move beyond the traditional business card and create a stronger digital first impression.</p>
+      </div>
+
+      <div class="row g-4 mt-2">
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="0">
+          <div class="info-card">
+            <div class="icon-wrap"><i class="bi bi-lightning-charge-fill"></i></div>
+            <h3>Instant access</h3>
+            <p>One tap opens the page you want, without manually typing a URL or searching online.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+          <div class="info-card">
+            <div class="icon-wrap"><i class="bi bi-people-fill"></i></div>
+            <h3>Better engagement</h3>
+            <p>Instead of a generic contact card, you send people directly to a relevant page.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+          <div class="info-card">
+            <div class="icon-wrap"><i class="bi bi-graph-up-arrow"></i></div>
+            <h3>Stronger conversion</h3>
+            <p>Bring clients to a portfolio, a landing page, a booking form, or a CV with zero friction.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+          <div class="info-card">
+            <div class="icon-wrap"><i class="bi bi-shield-check"></i></div>
+            <h3>Premium brand feel</h3>
+            <p>It looks like a modern product, not a standard printed card, and makes your business memorable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-bg-alt py-5" id="how-it-works">
+    <div class="container">
+      <div class="section-title text-center" data-aos="fade-up">
+        <h2>How it works</h2>
+        <p>Simple for your team, intuitive for every client.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="step-card">
+            <span class="step-number">01</span>
+            <h3>We design the card</h3>
+            <p>We create a premium card that reflects your brand, your tone, and your business identity.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="step-card">
+            <span class="step-number">02</span>
+            <h3>We link the NFC chip</h3>
+            <p>The chip is connected to a precise destination: website, portfolio, event page, or personal profile.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="step-card">
+            <span class="step-number">03</span>
+            <h3>People tap and land</h3>
+            <p>When a client brings the card close to a phone, they land exactly where you want them to go.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="use-case-panel">
+            <span class="eyebrow dark">Built for real business moments</span>
+            <h2>Not just a card. A conversion tool.</h2>
+            <p>
+              This is especially useful for companies that want to create stronger relationships with potential clients.
+              Instead of leaving a normal business card, they hand over an NFC card that opens the page that matters most:
+              the company website, the portfolio, a project case study, or a personal CV.
+            </p>
+            <ul class="feature-list">
+              <li><i class="bi bi-check2-square"></i> Ideal for agencies, creatives, consultants, and sales teams</li>
+              <li><i class="bi bi-check2-square"></i> Perfect for events, meetings, networking, and reception desks</li>
+              <li><i class="bi bi-check2-square"></i> Makes the first impression feel premium and digital-first</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="portfolio-surface">
+            <div class="mini-window">
+              <span>Open destination</span>
+              <strong>Portfolio / Website / CV</strong>
+            </div>
+            <div class="floating-stat">
+              <strong>+3x</strong>
+              <span>more engagement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-bg py-5">
+    <div class="container">
+      <div class="section-title text-center" data-aos="fade-up">
+        <h2>Use cases</h2>
+        <p>Choose the exact destination you want to send people to.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+          <div class="case-card">
+            <i class="bi bi-globe"></i>
+            <h4>Website</h4>
+            <p>Send clients directly to your latest landing page or brand site.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="case-card">
+            <i class="bi bi-folder2-open"></i>
+            <h4>Portfolio</h4>
+            <p>Show your work without needing them to search or ask for a link.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="case-card">
+            <i class="bi bi-person-vcard"></i>
+            <h4>CV</h4>
+            <p>Make a personal or team profile instantly available in any networking setting.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="case-card">
+            <i class="bi bi-calendar-event"></i>
+            <h4>Booking or campaign</h4>
+            <p>Open a form, event, product page, or conversion path in one tap.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8" data-aos="fade-right">
+          <h2>Give your clients a better way to connect.</h2>
+          <p>Replace the traditional business card with a digital touchpoint that is more useful, memorable and conversion-focused.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+          <a href="{{ url_for('main.index') }}#contact" class="btn-get-started pulse-animation">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 {% endblock %}
