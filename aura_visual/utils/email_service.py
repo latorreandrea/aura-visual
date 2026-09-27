@@ -27,17 +27,13 @@ def send_contact_notification(form_data):
         smtp_port = current_app.config.get('MAIL_PORT', 587)
         use_tls = current_app.config.get('MAIL_USE_TLS', True)
         
-        # Debug logging
-        current_app.logger.info(f"SMTP Config: SERVER={smtp_server}, PORT={smtp_port}, TLS={use_tls}")
-        current_app.logger.info(f"Username retrieved: {'Yes' if username else 'No'}")
-        current_app.logger.info(f"Password retrieved: {'Yes' if password else 'No'}")
+        # Keep logs minimal and avoid leaking operational details/secrets.
+        current_app.logger.info('Preparing contact notification email')
         
         # Validate credentials
         if not username or not password:
-            current_app.logger.error("Failed to retrieve email credentials from Secret Manager")
+            current_app.logger.error('Email credentials are missing')
             return False
-        
-        current_app.logger.info(f"Attempting to send email using {username} via direct SMTP")
         
         # Create message
         msg = MIMEMultipart()
@@ -66,18 +62,18 @@ Message: {form_data.get('message')}
         
         # Connect to server and send
         if use_tls:
-            server = smtplib.SMTP(smtp_server, smtp_port)
-            server.starttls()
+            with smtplib.SMTP(smtp_server, smtp_port, timeout=10) as server:
+                server.starttls()
+                server.login(username, password)
+                server.send_message(msg)
         else:
-            server = smtplib.SMTP_SSL(smtp_server, smtp_port)
-            
-        server.login(username, password)
-        server.send_message(msg)
-        server.quit()
+            with smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=10) as server:
+                server.login(username, password)
+                server.send_message(msg)
         
-        current_app.logger.info("Email notification sent successfully via direct SMTP")
+        current_app.logger.info('Contact notification email sent')
         return True
         
     except Exception as e:
-        current_app.logger.error(f"Error sending email via direct SMTP: {str(e)}")
+        current_app.logger.error(f'Email send error: {str(e)}')
         return False

@@ -1,9 +1,52 @@
+import json
+import urllib.request
+import urllib.parse
+
 from flask import Blueprint, render_template, request, jsonify, current_app, send_from_directory
 from ..forms import ContactForm
 from ..repositories.contact_repository import ContactRepository  
 from ..utils.email_service import send_contact_notification
+from .. import limiter
 
 main = Blueprint('main', __name__)
+
+
+def validate_recaptcha():
+    """Verify Google reCAPTCHA v2 token using the free standard endpoint."""
+    secret_key = current_app.config.get('RECAPTCHA_SECRET_KEY')
+    token = request.form.get('g-recaptcha-response', '').strip()
+
+    if not secret_key:
+        current_app.logger.warning('reCAPTCHA secret key is missing; skipping verification.')
+        return True
+
+    if not token:
+        raise ValueError('Please complete the reCAPTCHA challenge.')
+
+    payload = urllib.parse.urlencode({
+        'secret': secret_key,
+        'response': token,
+    }).encode('utf-8')
+
+    request_obj = urllib.request.Request(
+        'https://www.google.com/recaptcha/api/siteverify',
+        data=payload,
+        headers={'Content-Type': 'application/x-www-form-urlencoded'},
+        method='POST',
+    )
+
+    try:
+        with urllib.request.urlopen(request_obj, timeout=10) as response:
+            result = json.loads(response.read().decode('utf-8'))
+    except Exception as exc:
+        current_app.logger.error(f'reCAPTCHA verification error: {exc}')
+        raise ValueError('Unable to verify reCAPTCHA. Please try again.')
+
+    if not result.get('success'):
+        current_app.logger.warning(f'reCAPTCHA failed: {result.get("error-codes")}')
+        raise ValueError('Please complete the reCAPTCHA challenge correctly.')
+
+    return True
 
 @main.route('/')
 def index():
@@ -11,6 +54,7 @@ def index():
 
 
 @main.route('/submit_contact', methods=['POST'])
+@limiter.limit('5 per hour')
 def submit_contact():
     """
         Route to handle contact form submission.
@@ -30,6 +74,14 @@ def submit_contact():
             'success': False,
             'errors': errors,
             'message': 'Please correct the errors in the form'
+        }), 400
+
+    try:
+        validate_recaptcha()
+    except ValueError as e:
+        return jsonify({
+            'success': False,
+            'message': str(e)
         }), 400
     
     try:
@@ -86,3 +138,12 @@ def sitemap():
 @main.route('/robots.txt')
 def robots():
     return send_from_directory(current_app.static_folder, 'robots.txt', mimetype='text/plain')
+
+
+@main.after_app_request
+def apply_cache_headers(response):
+    if request.path.startswith('/static/'):
+        response.headers['Cache-Control'] = 'public, max-age=86400'
+    elif request.path in ['/robots.txt', '/sitemap.xml']:
+        response.headers['Cache-Control'] = 'public, max-age=3600'
+    return response

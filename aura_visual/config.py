@@ -30,6 +30,12 @@ class Config:
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', 'info@auravisual.dk')
 
     # -------------------------------------------------------------------------
+    # Google reCAPTCHA v2 (standard, free tier)
+    # -------------------------------------------------------------------------
+    RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '')
+    RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '')
+
+    # -------------------------------------------------------------------------
     # Your Card — product page defaults (overridable via env vars)
     # -------------------------------------------------------------------------
     YOUR_CARD_PRODUCT_NAME = os.environ.get('YOUR_CARD_PRODUCT_NAME', 'Your Card')

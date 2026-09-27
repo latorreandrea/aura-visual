@@ -21,6 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.invalid-feedback').forEach(el => el.remove());
             document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
 
+            const recaptchaWidget = contactForm.querySelector('.g-recaptcha');
+            const recaptchaField = contactForm.querySelector('[name="g-recaptcha-response"]');
+            if (recaptchaWidget && recaptchaWidget.dataset.sitekey && (!recaptchaField || !recaptchaField.value)) {
+                loading.style.display = 'none';
+                errorMessage.textContent = 'Please complete the reCAPTCHA verification.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
             // Create a FormData object to send the data
             const formData = new FormData(contactForm);
 

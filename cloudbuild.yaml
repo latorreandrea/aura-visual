@@ -21,12 +21,18 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '3'
+      - '--concurrency'
+      - '20'
       - '--memory'
       - '256Mi'
       - '--cpu'
       - '1'
       - '--set-env-vars'
-      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID,MAIL_SERVER=${_MAIL_SERVER},MAIL_PORT=${_MAIL_PORT},MAIL_USE_TLS=${_MAIL_USE_TLS},MAIL_USE_SSL=${_MAIL_USE_SSL},MAIL_DEFAULT_SENDER=${_MAIL_DEFAULT_SENDER}'
+      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID,MAIL_SERVER=${_MAIL_SERVER},MAIL_PORT=${_MAIL_PORT},MAIL_USE_TLS=${_MAIL_USE_TLS},MAIL_USE_SSL=${_MAIL_USE_SSL},MAIL_DEFAULT_SENDER=${_MAIL_DEFAULT_SENDER},RECAPTCHA_SITE_KEY=${_RECAPTCHA_SITE_KEY},RECAPTCHA_SECRET_KEY=${_RECAPTCHA_SECRET_KEY}'
 
 substitutions:
   _MAIL_SERVER: smtp.zoho.eu
@@ -34,6 +40,8 @@ substitutions:
   _MAIL_USE_TLS: 'True'
   _MAIL_USE_SSL: 'False'
   _MAIL_DEFAULT_SENDER: 'info@auravisual.dk'
+  _RECAPTCHA_SITE_KEY: ''
+  _RECAPTCHA_SECRET_KEY: ''
   
 options:
   logging: CLOUD_LOGGING_ONLY
