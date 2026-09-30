@@ -49,6 +49,12 @@ The project includes a dedicated sales page for the NFC card product under the `
 
 The page is implemented as a separate Flask blueprint and stays consistent with the existing marketing site structure and shared navbar.
 
+Template organization for the product page follows page-scoped components:
+
+- `templates/your_card/index.html` orchestrates the page with includes only
+- `templates/your_card/components/hero.html` contains the hero with the same animated wave pattern used on the homepage
+- `templates/your_card/components/` contains the remaining section partials (`benefits`, `how_it_works`, `conversion_story`, `use_cases`, `cta_strip`)
+
 Navigation behavior is route-aware:
 
 - homepage (`/`) uses the original section navigation (`#hero`, `#mission`, `#about`, `#team`, `#portfolio`, `#plan`, `#contact`)
@@ -106,6 +112,28 @@ aura_visual/
    utils/
       email_service.py
    templates/
+      components/
+         navbar.html
+         footer.html
+      main/
+         index.html
+         components/
+            hero.html
+            mission.html
+            about.html
+            team.html
+            portfolio.html
+            plan.html
+            contact.html
+      your_card/
+         index.html
+         components/
+            hero.html
+            benefits.html
+            how_it_works.html
+            conversion_story.html
+            use_cases.html
+            cta_strip.html
    static/
 cloudbuild.yaml
 Dockerfile

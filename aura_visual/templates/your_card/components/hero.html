@@ -1,0 +1,61 @@
+<section class="your-card-hero" id="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <span class="eyebrow">Smart networking</span>
+        <h1>One tap. <span>One destination.</span></h1>
+        <p class="lead">
+          A smarter business card for companies that want to turn every conversation into a digital opportunity.
+          With NFC technology, your card opens the exact page you want - website, portfolio, CV, booking form, or campaign.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="{{ url_for('main.index') }}#contact" class="btn-get-started pulse-animation">Get Your Card</a>
+          <a href="{{ url_for('main.index') }}" class="btn btn-outline-light btn-lg">Back to home</a>
+        </div>
+        <ul class="hero-points">
+          <li><i class="bi bi-check-circle-fill"></i> Tap to open any page instantly</li>
+          <li><i class="bi bi-check-circle-fill"></i> Built for B2B networking and lead generation</li>
+          <li><i class="bi bi-check-circle-fill"></i> Designed to feel premium and memorable</li>
+        </ul>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="nfc-showcase">
+          <div class="nfc-card">
+            <div class="chip"></div>
+            <div class="brand">AuraVisual</div>
+            <div class="card-name">Your Card</div>
+            <div class="tag">Tap to connect</div>
+            <div class="wave-ring ring-one"></div>
+            <div class="wave-ring ring-two"></div>
+            <div class="wave-ring ring-three"></div>
+          </div>
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <div class="mini-card">
+                <span>Portfolio</span>
+                <strong>auravisual.dk</strong>
+              </div>
+              <div class="mini-circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+    <defs>
+      <path id="wave-path-your-card" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="wave1">
+      <use xlink:href="#wave-path-your-card" x="50" y="3" fill="rgba(255,255,255, .1)" />
+    </g>
+    <g class="wave2">
+      <use xlink:href="#wave-path-your-card" x="50" y="0" fill="rgba(255,255,255, .2)" />
+    </g>
+    <g class="wave3">
+      <use xlink:href="#wave-path-your-card" x="50" y="9" fill="#fff" />
+    </g>
+  </svg>
+</section>
