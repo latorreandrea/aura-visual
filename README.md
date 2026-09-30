@@ -7,11 +7,11 @@ The project is structured for low operational overhead, production safety, and f
 ## Table of Contents
 
 - [Overview](#overview)
+- [Homepage](#homepage)
 - [Your Card product page](#your-card-product-page)
 - [Key Features](#key-features)
 - [Architecture](#architecture)
 - [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
@@ -37,6 +37,26 @@ AuraVisual is a modular Flask web application designed for:
 - promoting digital product offers such as the NFC business card landing page
 
 The codebase follows a factory pattern with Blueprints, making it easy to extend and maintain.
+
+## Homepage
+
+The project includes a dedicated homepage under the `/` route. The page is designed to present the complete AuraVisual offer and guide visitors from discovery to contact.
+
+Homepage content follows a full landing-page flow:
+
+- hero section with animated wave background
+- mission and services presentation
+- about narrative and process walkthrough
+- team showcase
+- portfolio projects
+- package and pricing overview
+- contact form with reCAPTCHA protection
+
+Template organization for the homepage follows page-scoped components:
+
+- `templates/main/index.html` orchestrates the page with includes only
+- `templates/main/components/hero.html` contains the homepage hero and animated wave pattern
+- `templates/main/components/` contains the remaining section partials (`mission`, `about`, `team`, `portfolio`, `plan`, `contact`)
 
 ## Your Card product page
 
@@ -93,52 +113,6 @@ High-level request flow:
 - Google Cloud Firestore (NoSQL)
 - Gunicorn (production WSGI server)
 - Docker + Cloud Build + Cloud Run
-
-## Project Structure
-
-```text
-app.py
-aura_visual/
-   __init__.py
-   config.py
-   forms.py
-   repositories/
-      contact_repository.py
-   routes/
-      main.py
-      your_card.py
-   services/
-      db.py
-   utils/
-      email_service.py
-   templates/
-      components/
-         navbar.html
-         footer.html
-      main/
-         index.html
-         components/
-            hero.html
-            mission.html
-            about.html
-            team.html
-            portfolio.html
-            plan.html
-            contact.html
-      your_card/
-         index.html
-         components/
-            hero.html
-            benefits.html
-            how_it_works.html
-            conversion_story.html
-            use_cases.html
-            cta_strip.html
-   static/
-cloudbuild.yaml
-Dockerfile
-requirements.txt
-```
 
 ## Getting Started
 
