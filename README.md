@@ -7,6 +7,7 @@ The project is structured for low operational overhead, production safety, and f
 ## Table of Contents
 
 - [Overview](#overview)
+- [Your Card product page](#your-card-product-page)
 - [Key Features](#key-features)
 - [Architecture](#architecture)
 - [Tech Stack](#tech-stack)
@@ -47,6 +48,11 @@ The project includes a dedicated sales page for the NFC card product under the `
 - improve engagement during networking, sales meetings, and events
 
 The page is implemented as a separate Flask blueprint and stays consistent with the existing marketing site structure and shared navbar.
+
+Navigation behavior is route-aware:
+
+- homepage (`/`) uses the original section navigation (`#hero`, `#mission`, `#about`, `#team`, `#portfolio`, `#plan`, `#contact`)
+- card page (`/your-card/`) uses product-focused anchors (`#hero`, `#benefits`, `#how-it-works`) and still includes a `Home` link back to the homepage
 
 ## Key Features
 
