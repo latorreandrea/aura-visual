@@ -332,26 +332,26 @@ html {
 }
 
 /* AOS Animation Enhancements */
-[data-aos] {
+.aos-enabled [data-aos] {
   pointer-events: none; /* evita problemi di click durante l'animazione */
 }
-[data-aos].aos-animate {
+.aos-enabled [data-aos].aos-animate {
   pointer-events: auto; /* ripristina i click quando l'animazione è completa */
 }
 
 /* Rallenta le animazioni zoom su desktop */
 @media screen and (min-width: 992px) {
-  [data-aos="zoom-out"] {
+  .aos-enabled [data-aos="zoom-out"] {
     transition-duration: 1200ms; /* durata più lunga per zoom-out */
   }
 }
 
 /* Effetto più fluido per le animazioni di fade */
-[data-aos^="fade"][data-aos^="fade"] {
+.aos-enabled [data-aos^="fade"][data-aos^="fade"] {
   opacity: 0;
   transition-property: opacity, transform;
 }
-[data-aos^="fade"][data-aos^="fade"].aos-animate {
+.aos-enabled [data-aos^="fade"][data-aos^="fade"].aos-animate {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }

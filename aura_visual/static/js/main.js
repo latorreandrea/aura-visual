@@ -1,16 +1,46 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // First load the essential content
-    setTimeout(function() {
-        // Then initialize AOS with optimized settings
+    const root = document.documentElement;
+
+    function revealAosElements() {
+      const animatedNodes = document.querySelectorAll('[data-aos]');
+      animatedNodes.forEach(function(node) {
+        node.classList.add('aos-animate');
+        node.style.opacity = '1';
+        node.style.transform = 'none';
+        node.style.pointerEvents = 'auto';
+      });
+    }
+
+    function initializeAOS() {
+      if (typeof AOS === 'undefined') {
+        console.warn('AOS library not available. Rendering content without animations.');
+        revealAosElements();
+        return;
+      }
+
+      try {
+        root.classList.add('aos-enabled');
         AOS.init({
-            duration: 800,         // Reduced duration
-            easing: 'ease-out',    // Lighter easing
-            once: true,            // Single animation only
-            disable: 'mobile',     // Disable on mobile
-            startEvent: 'load',    // Start on complete load
-            throttleDelay: 99      // Increase throttle delay
+          duration: 800,
+          easing: 'ease-out',
+          once: true,
+          disable: false,
+          startEvent: 'DOMContentLoaded',
+          throttleDelay: 99
         });
-    }, 100);
+
+        if (typeof AOS.refreshHard === 'function') {
+          AOS.refreshHard();
+        }
+      } catch (error) {
+        console.warn('AOS initialization failed. Rendering content without animations.', error);
+        root.classList.remove('aos-enabled');
+        revealAosElements();
+      }
+    }
+
+    initializeAOS();
+
     // Main selectors
     const selectHeader = document.querySelector('#header');
     const selectMobileNav = document.querySelector('.mobile-nav-toggle');
@@ -18,6 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to handle header during scroll
     function headerScrolled() {
+        if (!selectHeader) {
+          return;
+        }
         if (window.scrollY > 100) {
         selectHeader.classList.add('header-scrolled');
         } else {
@@ -34,6 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Activate mobile menu
     if (selectMobileNav) {
         selectMobileNav.addEventListener('click', function() {
+        if (!selectNavbarNav) {
+          return;
+        }
         selectNavbarNav.classList.toggle('navbar-mobile');
         this.classList.toggle('bi-list');
         this.classList.toggle('bi-x');
@@ -42,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to close mobile navbar
   function closeMobileNav() {
+    if (!selectNavbarNav || !selectMobileNav) {
+      return;
+    }
     selectNavbarNav.classList.remove('navbar-mobile');
     selectMobileNav.classList.add('bi-list');
     selectMobileNav.classList.remove('bi-x');
@@ -53,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
   navbarLinks.forEach(function(link) {
     link.addEventListener('click', function() {
       // If mobile navbar is open, close it
-      if (selectNavbarNav.classList.contains('navbar-mobile')) {
+      if (selectNavbarNav && selectNavbarNav.classList.contains('navbar-mobile')) {
         closeMobileNav();
       }
     });
@@ -64,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   navDropdowns.forEach(function(el) {
     el.addEventListener('click', function(event) {
-      if (selectNavbarNav.classList.contains('navbar-mobile')) {
+      if (selectNavbarNav && selectNavbarNav.classList.contains('navbar-mobile')) {
         event.preventDefault();
         this.nextElementSibling.classList.toggle('dropdown-active');
       }
