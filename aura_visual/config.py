@@ -13,6 +13,12 @@ class Config:
     GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
 
     # -------------------------------------------------------------------------
+    # Static assets
+    # -------------------------------------------------------------------------
+    # Bump this value per deployment to force browser refresh of CSS/JS files.
+    ASSET_VERSION = os.environ.get('ASSET_VERSION', '1')
+
+    # -------------------------------------------------------------------------
     # CSRF Protection
     # -------------------------------------------------------------------------
     WTF_CSRF_ENABLED = True

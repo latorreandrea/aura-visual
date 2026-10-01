@@ -25,13 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
           easing: 'ease-out',
           once: true,
           disable: false,
-          startEvent: 'DOMContentLoaded',
           throttleDelay: 99
         });
 
         if (typeof AOS.refreshHard === 'function') {
           AOS.refreshHard();
         }
+
+        // If AOS does not mark elements as initialized quickly, fallback to visible content.
+        setTimeout(function() {
+          const initializedAosNode = document.querySelector('[data-aos].aos-init');
+          if (!initializedAosNode) {
+            console.warn('AOS did not initialize elements in time. Falling back to visible content.');
+            root.classList.remove('aos-enabled');
+            revealAosElements();
+          }
+        }, 700);
       } catch (error) {
         console.warn('AOS initialization failed. Rendering content without animations.', error);
         root.classList.remove('aos-enabled');
@@ -40,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     initializeAOS();
+
+    // Handle browser back-forward cache restores and keep AOS/content state consistent.
+    window.addEventListener('pageshow', function() {
+      if (typeof AOS !== 'undefined' && typeof AOS.refreshHard === 'function') {
+        AOS.refreshHard();
+      } else if (typeof AOS === 'undefined') {
+        revealAosElements();
+      }
+    });
 
     // Main selectors
     const selectHeader = document.querySelector('#header');

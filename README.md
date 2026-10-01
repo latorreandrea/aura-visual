@@ -268,6 +268,14 @@ gcloud run deploy aura-visual \
    --allow-unauthenticated
 ```
 
+### Static asset cache busting
+
+- The app appends `ASSET_VERSION` to local static CSS/JS URLs.
+- Cloud Build updates only this variable using `--update-env-vars ASSET_VERSION=$BUILD_ID`.
+- This avoids overriding existing Cloud Run environment variables already configured on the service.
+- Each build produces new asset URLs and prevents stale browser cache from serving old frontend files.
+- If you deploy manually, update `ASSET_VERSION` explicitly.
+
 ## Cloud Run Cost Optimization
 
 For this architecture, the main cost drivers are request volume and compute time, not just image size.
@@ -348,6 +356,7 @@ Fix:
 - keep content visible by default (progressive enhancement)
 - apply hidden/animated states only when AOS is confirmed active
 - guard AOS initialization in JavaScript and add a fallback path when AOS is unavailable
+- use cache mitigation with `ASSET_VERSION` + Cloud Build `BUILD_ID` via `--update-env-vars`
 
 ## License
 

@@ -333,7 +333,7 @@ html {
 
 /* AOS Animation Enhancements */
 .aos-enabled [data-aos] {
-  pointer-events: none; /* evita problemi di click durante l'animazione */
+  pointer-events: auto; /* evita blocchi di interazione se AOS non completa */
 }
 .aos-enabled [data-aos].aos-animate {
   pointer-events: auto; /* ripristina i click quando l'animazione è completa */
@@ -348,7 +348,7 @@ html {
 
 /* Effetto più fluido per le animazioni di fade */
 .aos-enabled [data-aos^="fade"][data-aos^="fade"] {
-  opacity: 0;
+  opacity: 1;
   transition-property: opacity, transform;
 }
 .aos-enabled [data-aos^="fade"][data-aos^="fade"].aos-animate {

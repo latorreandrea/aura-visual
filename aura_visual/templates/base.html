@@ -105,7 +105,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css', v=config.ASSET_VERSION) }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     
     {% block extra_css %}{% endblock %}
@@ -132,7 +132,7 @@
 
 
         <!-- Template Main JS File -->
-        <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
-        <script src="{{ url_for('static', filename='js/contact.js') }}" defer></script>
+        <script src="{{ url_for('static', filename='js/main.js', v=config.ASSET_VERSION) }}" defer></script>
+        <script src="{{ url_for('static', filename='js/contact.js', v=config.ASSET_VERSION) }}" defer></script>
         {% block extra_js %}{% endblock %}
 </html>

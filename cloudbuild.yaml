@@ -31,17 +31,8 @@ steps:
       - '256Mi'
       - '--cpu'
       - '1'
-      - '--set-env-vars'
-      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID,MAIL_SERVER=${_MAIL_SERVER},MAIL_PORT=${_MAIL_PORT},MAIL_USE_TLS=${_MAIL_USE_TLS},MAIL_USE_SSL=${_MAIL_USE_SSL},MAIL_DEFAULT_SENDER=${_MAIL_DEFAULT_SENDER},RECAPTCHA_SITE_KEY=${_RECAPTCHA_SITE_KEY},RECAPTCHA_SECRET_KEY=${_RECAPTCHA_SECRET_KEY}'
-
-substitutions:
-  _MAIL_SERVER: smtp.zoho.eu
-  _MAIL_PORT: '587'
-  _MAIL_USE_TLS: 'True'
-  _MAIL_USE_SSL: 'False'
-  _MAIL_DEFAULT_SENDER: 'info@auravisual.dk'
-  _RECAPTCHA_SITE_KEY: ''
-  _RECAPTCHA_SECRET_KEY: ''
+      - '--update-env-vars'
+      - 'ASSET_VERSION=$BUILD_ID'
   
 options:
   logging: CLOUD_LOGGING_ONLY
