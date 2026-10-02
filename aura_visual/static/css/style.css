@@ -1648,10 +1648,10 @@ html {
 }
 
 .cta-strip {
-  background: linear-gradient(145deg, rgba(14, 58, 82, 0.94), rgba(14, 58, 82, 0.86));
-  border-top: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  color: #fff;
+  background: transparent;
+  border-top: 1px solid rgba(14, 58, 82, 0.08);
+  border-bottom: 1px solid rgba(14, 58, 82, 0.08);
+  color: rgb(14, 58, 82);
   padding: 70px 0;
 }
 
@@ -1659,12 +1659,12 @@ html {
   margin: 0;
   font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 800;
-  color: #ffffff;
+  color: rgb(14, 58, 82);
 }
 
 .cta-strip p {
   margin: 12px 0 0;
-  color: rgba(236,247,255,0.88);
+  color: #4d5a68;
   font-size: 1.06rem;
 }
 
@@ -1722,19 +1722,6 @@ html {
   box-shadow: 0 18px 38px rgba(14, 58, 82, 0.07);
 }
 
-.product-kicker {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: #1b5a7c;
-  background: rgba(14, 58, 82, 0.08);
-  border-radius: 999px;
-  padding: 6px 12px;
-  margin-bottom: 12px;
-}
-
 .product-line-card h3 {
   color: rgb(14, 58, 82);
   font-size: clamp(1.65rem, 2.7vw, 2.2rem);
@@ -1783,11 +1770,25 @@ html {
   margin-top: 6px;
 }
 
-.product-cta-text {
+.product-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 16px;
-  margin-bottom: 0;
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: 2px solid #1acc8d;
+  background: #1acc8d;
+  color: #ffffff;
   font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.product-cta-btn:hover {
+  background: #ffffff;
   color: #0e3a52;
+  border-color: #0e3a52;
 }
 
 .price-ladder {
