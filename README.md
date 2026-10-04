@@ -76,11 +76,16 @@ Template organization for the product page follows page-scoped components:
 - `templates/your_card/index.html` orchestrates the page with includes only
 - `templates/your_card/components/hero.html` contains the hero with the same animated wave pattern used on the homepage
 - `templates/your_card/components/` contains the remaining section partials (`benefits`, `product_line`, `how_it_works`, `conversion_story`, `use_cases`, `cta_strip`)
+- additional section anchors are exposed for footer deep links: `#conversion-story`, `#use-cases`, `#cta-strip`
 
-Navigation behavior is route-aware:
+Navigation behavior is split between navbar and footer:
 
-- homepage (`/`) uses the original section navigation (`#hero`, `#mission`, `#about`, `#team`, `#portfolio`, `#plan`, `#contact`)
-- card page (`/your-card/`) uses product-focused anchors (`#hero`, `#benefits`, `#how-it-works`) with a `Home` link to the homepage
+- navbar remains route-aware:
+  - homepage (`/`) uses the original section navigation (`#hero`, `#mission`, `#about`, `#team`, `#portfolio`, `#plan`, `#contact`)
+  - card page (`/your-card/`) uses product-focused anchors (`#hero`, `#benefits`, `#how-it-works`) with a `Home` link to the homepage
+- footer includes a cross-page sitemap for both areas:
+  - main sections (`#hero`, `#mission`, `#about`, `#team`, `#portfolio`, `#plan`, `#contact`)
+  - your-card sections (`#hero`, `#benefits`, `#how-it-works`, `#product-line`, `#conversion-story`, `#use-cases`, `#cta-strip`)
 
 ## Product Line & Pricing
 

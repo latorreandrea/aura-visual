@@ -40,16 +40,29 @@
           <!-- COLUMN 2: NAVIGATION -->
           <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
             <h4 class="mb-4">Explore Our Site</h4>
-            <div class="row">
-              <div class="col-12">
+            <div class="row footer-links-grid">
+              <div class="col-12 col-lg-6">
+                <p class="footer-links-group-title">Main</p>
                 <ul class="footer-links">
-                  <li><i class="bi bi-chevron-right me-2"></i><a href="#hero" aria-label="Go to Home section">Home</a></li>
-                  <li><i class="bi bi-chevron-right me-2"></i><a href="#mission" aria-label="Go to Mission section">Mission</a></li>
-                  <li><i class="bi bi-chevron-right me-2"></i><a href="#about" aria-label="Go to About section">About us</a></li>
-                  <li><i class="bi bi-chevron-right me-2"></i><a href="#team" aria-label="Go to Team section">Team</a></li>
-                  <li><i class="bi bi-chevron-right me-2"></i><a href="#portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
-                  <li><i class="bi bi-chevron-right me-2"></i><a href="#plan" aria-label="Go to Plans section">Plans</a></li>
-                  <li><i class="bi bi-chevron-right me-2"></i><a href="#contact" aria-label="Go to Contact section">Contact</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('main.index') }}#hero" aria-label="Go to Home section">Home</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('main.index') }}#mission" aria-label="Go to Mission section">Mission</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('main.index') }}#about" aria-label="Go to About section">About us</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('main.index') }}#team" aria-label="Go to Team section">Team</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('main.index') }}#portfolio" aria-label="Go to Portfolio section">Portfolio</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('main.index') }}#plan" aria-label="Go to Plans section">Plans</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('main.index') }}#contact" aria-label="Go to Contact section">Contact</a></li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-6">
+                <p class="footer-links-group-title">Your Card</p>
+                <ul class="footer-links">
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('your_card.index') }}#hero" aria-label="Go to Your Card hero section">Overview</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('your_card.index') }}#benefits" aria-label="Go to Your Card benefits section">Benefits</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('your_card.index') }}#how-it-works" aria-label="Go to Your Card how it works section">How it works</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('your_card.index') }}#product-line" aria-label="Go to Your Card product line section">Product line</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('your_card.index') }}#conversion-story" aria-label="Go to Your Card conversion story section">Conversion story</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('your_card.index') }}#use-cases" aria-label="Go to Your Card use cases section">Use cases</a></li>
+                  <li><i class="bi bi-chevron-right me-2"></i><a href="{{ url_for('your_card.index') }}#cta-strip" aria-label="Go to Your Card call to action section">Call to action</a></li>
                 </ul>
               </div>
             </div>

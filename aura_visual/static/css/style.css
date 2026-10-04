@@ -906,42 +906,62 @@ html {
 
 #footer .footer-links {
   margin-bottom: 30px;
-  list-style-type: none;
-  padding-left: 0;
-}
-
-#footer .footer-links ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-#footer .footer-links ul li {
+#footer .footer-links-grid {
+  row-gap: 16px;
+}
+
+#footer .footer-links-group-title {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+#footer .footer-links li {
   padding: 10px 0;
   display: flex;
   align-items: center;
 }
 
-#footer .footer-links ul li:first-child {
+#footer .footer-links li:first-child {
   padding-top: 0;
 }
 
-#footer .footer-links ul i {
+#footer .footer-links li i {
   padding-right: 10px;
   color: #1acc8d;
   font-size: 16px;
   line-height: 0;
+  transition: transform 0.25s ease, text-shadow 0.25s ease;
+  transform: translateX(0);
 }
 
-#footer .footer-links ul a {
+#footer .footer-links li a {
   color: rgba(255, 255, 255, 0.8);
-  transition: 0.3s;
+  transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
   display: inline-block;
   line-height: 1;
   text-decoration: none;
+  transform: translateX(0);
 }
 
-#footer .footer-links ul a:hover {
+#footer .footer-links li:hover i {
+  transform: translateX(-3px);
+  text-shadow: 0 0 8px rgba(26, 204, 141, 0.8);
+}
+
+#footer .footer-links li:hover a {
+  transform: translateX(3px);
+  text-shadow: 0 0 8px rgba(26, 204, 141, 0.45);
+}
+
+#footer .footer-links li a:hover {
   color: #1acc8d;
   text-decoration: none;
 }
@@ -950,14 +970,11 @@ html {
 .footer-links li a {
   color: #ffffff !important;
   text-decoration: none !important;
-  transition: color 0.25s ease, transform 0.25s ease;
-  transform: translateX(0);
 }
 
 .footer-links li a:hover {
   color: #1acc8d !important;
   text-decoration: none !important;
-  transform: translateX(3px);
 }
 
 /* Remove underline in all states */
@@ -969,14 +986,17 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   #footer .social-links a,
+  #footer .footer-links li i,
   .footer-links li a {
-    transition: color 0.01s linear, background-color 0.01s linear;
+    transition: color 0.01s linear, background-color 0.01s linear, text-shadow 0.01s linear;
     transform: none;
   }
 
+  #footer .footer-links li:hover i,
   #footer .social-links a:hover,
-  .footer-links li a:hover {
+  .footer-links li:hover a {
     transform: none;
+    text-shadow: none;
     box-shadow: none;
   }
 }
