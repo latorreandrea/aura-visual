@@ -892,13 +892,16 @@ html {
   text-align: center;
   width: 36px;
   height: 36px;
-  transition: 0.3s;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transform: translateY(0) scale(1);
 }
 
 #footer .social-links a:hover {
   background: #1acc8d;
   color: #fff;
   text-decoration: none;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 #footer .footer-links {
@@ -947,12 +950,14 @@ html {
 .footer-links li a {
   color: #ffffff !important;
   text-decoration: none !important;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease, transform 0.25s ease;
+  transform: translateX(0);
 }
 
 .footer-links li a:hover {
   color: #1acc8d !important;
   text-decoration: none !important;
+  transform: translateX(3px);
 }
 
 /* Remove underline in all states */
@@ -961,6 +966,20 @@ html {
 .footer-links li a:visited {
   text-decoration: none !important;
 } 
+
+@media (prefers-reduced-motion: reduce) {
+  #footer .social-links a,
+  .footer-links li a {
+    transition: color 0.01s linear, background-color 0.01s linear;
+    transform: none;
+  }
+
+  #footer .social-links a:hover,
+  .footer-links li a:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
 
 #footer .copyright {
   text-align: center;
