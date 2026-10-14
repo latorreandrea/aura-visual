@@ -25,6 +25,7 @@ The project is structured for low operational overhead, production safety, and f
 - [Container Size Notes](#container-size-notes)
 - [Troubleshooting](#troubleshooting)
 - [Known Bug: Invisible Content on Load](#known-bug-invisible-content-on-load)
+- [Credits](#credits)
 - [License](#license)
 
 ## Overview
@@ -362,6 +363,20 @@ Fix:
 - apply hidden/animated states only when AOS is confirmed active
 - guard AOS initialization in JavaScript and add a fallback path when AOS is unavailable
 - use cache mitigation with `ASSET_VERSION` + Cloud Build `BUILD_ID` via `--update-env-vars`
+
+## Credits
+
+### Illustrations
+
+- Illustrations by [Storyset](https://storyset.com), used across the marketing site (for example the homepage hero in `aura_visual/templates/main/components/hero.html`).
+- The attribution is also shown in the site footer, rendered by `aura_visual/templates/components/footer.html`: "Illustrations by Storyset".
+
+### Third-party assets
+
+- [Bootstrap 5.2.3](https://getbootstrap.com) — responsive layout and UI components (MIT License)
+- [Bootstrap Icons 1.10.0](https://icons.getbootstrap.com) — icon set used in the navbar and footer (MIT License)
+- [AOS 2.3.4](https://michalsnik.github.io/aos/) — scroll animations (MIT License)
+- [Google Fonts](https://fonts.google.com) — Open Sans, Montserrat, and Poppins typefaces (SIL Open Font License 1.1)
 
 ## License
 
