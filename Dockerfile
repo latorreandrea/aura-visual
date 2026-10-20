@@ -30,4 +30,4 @@ RUN chown -R appuser:appuser /app
 USER appuser
 
 
-CMD exec gunicorn --bind :$PORT 'aura_visual:create_app("production")' --workers 1 --threads 4 --timeout 60
+CMD exec gunicorn --bind :$PORT 'aura_visual:create_app("production")' --workers 1 --threads 4 --timeout 60 --access-logfile - --error-logfile -

@@ -1,5 +1,14 @@
 import os
 
+
+def _env_int(name, default):
+    """Read an integer environment variable, falling back to *default*."""
+    try:
+        return int(os.environ.get(name, default))
+    except (TypeError, ValueError):
+        return default
+
+
 class Config:
     # -------------------------------------------------------------------------
     # Security
@@ -22,7 +31,8 @@ class Config:
     # CSRF Protection
     # -------------------------------------------------------------------------
     WTF_CSRF_ENABLED = True
-    WTF_CSRF_TIME_LIMIT = 3600  # Token expires after 1 hour
+    # Token lifetime in seconds. Overridable for long forms or slow connections.
+    WTF_CSRF_TIME_LIMIT = _env_int('WTF_CSRF_TIME_LIMIT', 3600)
 
     # -------------------------------------------------------------------------
     # Email (SMTP via Zoho)
@@ -63,13 +73,23 @@ class ProductionConfig(Config):
     DEBUG = False
     TESTING = False
 
+    #: Environment variables that must be present for a production deploy.
+    REQUIRED_ENV_VARS = (
+        'FLASK_SECRET_KEY',
+        'RECAPTCHA_SITE_KEY',
+        'RECAPTCHA_SECRET_KEY',
+    )
+
     @classmethod
     def validate(cls):
-        """Raise an error at startup if required production secrets are missing."""
-        if not os.environ.get('FLASK_SECRET_KEY'):
+        """Raise an error at startup if required production settings are missing."""
+        # Only the variable names are reported: values are never logged.
+        missing = [name for name in cls.REQUIRED_ENV_VARS if not os.environ.get(name)]
+        if missing:
             raise RuntimeError(
-                "FLASK_SECRET_KEY environment variable is not set. "
-                "This is required in production."
+                "Missing required environment variables: "
+                + ", ".join(missing)
+                + ". The contact form cannot be protected without them."
             )
 
 
